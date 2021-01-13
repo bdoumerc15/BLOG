@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // ***********************GET************************
-app.get('/', (req, res) => res.render('home', { ejsTitle: title() }));
+app.get('/', (req, res) => res.render('home', { ejsTitle: title(), ejsHomeStartingContent: homeStartingContent }));
 
 app.listen(3000, function() {
     console.log("Server started on port 3000");
