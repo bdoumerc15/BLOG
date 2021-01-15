@@ -13,9 +13,35 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+const posts = [];
 
 // ***********************GET************************
-app.get('/', (req, res) => res.render('home', { ejsTitle: title(), ejsHomeStartingContent: homeStartingContent }));
+app.get('/', (req, res) => {
+    res.render('home', { ejsTitle: title(), ejsContent: homeStartingContent }); //, posts: posts });
+    if (posts) {
+        for (let post of posts) {
+            res.render('home', { ejsTitle: post.title, ejsContent: post.content });
+        };
+    }
+});
+app.get('/about', (req, res) => {
+    res.render('about', { ejsAbout: 'About', ejsAboutContent: aboutContent });
+});
+app.get('/contact', (req, res) => {
+    res.render('contact', { ejsContact: 'Contact', ejsContactContent: contactContent });
+})
+app.get("/compose", (req, res) => res.render('compose'));
+app.post('/compose', (req, res) => {
+    const post = {
+        title: req.body.title,
+        content: req.body.content
+    };
+    posts.push(post);
+    res.redirect('/');
+});
+// ***************************POST*************************
+
+
 
 app.listen(3000, function() {
     console.log("Server started on port 3000");

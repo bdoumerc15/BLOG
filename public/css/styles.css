@@ -45,3 +45,14 @@
     font-size: 1.3rem;
     text-align: justify;
 }
+
+#title,
+#content {
+    border: 1px black solid;
+    border-radius: 4px;
+    width: 100%;
+}
+
+#content {
+    height: 15rem;
+}
