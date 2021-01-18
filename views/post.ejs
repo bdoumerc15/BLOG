@@ -1,0 +1,11 @@
+<%- include('partials/header'); %>
+    <%if (posts && postName) {%>
+        <% const output = posts.filter(p => p.title === postName);%>
+            <h1>
+                <%= output[0].title %>
+            </h1>
+            <p>
+                <%= output[0].content %>
+            </p>
+            <%}%>
+                <%- include('partials/footer'); %>

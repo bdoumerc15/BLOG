@@ -1,0 +1,10 @@
+<%- include('partials/header') %>
+    <h1>All Topics</h1>
+    <ol>
+        <%        for (let post of posts) { %>
+            <li>
+                <%=post.title%>
+            </li>
+            <%}%>
+    </ol>
+    <%- include('partials/footer') %>

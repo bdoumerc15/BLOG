@@ -1,8 +1,19 @@
-<%-include('partials/header');%>
+<%- include('partials/header'); %>
     <h1 class="container">
-        <%= ejsTitle %>
+        Home
     </h1>
     <p class="content">
         <%= ejsContent %>
     </p>
-    <%-include('partials/footer');%>
+    <% for (let post of posts) { %>
+        <h1>
+            <%= post.title.toUpperCase() %>
+        </h1>
+        <p>
+            <%= `${post.content.substring(0, 100)}...` %>
+                <a href="post/<%= post.title %> "> Read More</a>
+                <br>
+                <time> <%= ejsDate %> </time>
+        </p>
+        <% } %>
+            <%-include('partials/footer');%>
